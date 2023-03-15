@@ -34,8 +34,11 @@ export default function Header() {
     };
 
     return (
-        <header>
-            {renderThemeChanger()}
+        <header className="sticky top-0 bg-light dark:bg-dark-500 backdrop-filter backdrop-blur-md bg-opacity-50 dark:bg-opacity-50 border-b border-light dark:border-dark-500">
+            <div className="mx-auto max-w-7xl flex justify-between items-center px-6 sm:px-8 xl:px-0 py-4 sm:py-6 text-xl xxs:text-2xl xs:text-3xl sm:text-4xl">
+                <Logo />
+                {renderThemeChanger()}
+            </div>
         </header>
     );
 };
