@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans bg-light dark:bg-dark-500 text-dark-500 dark:text-light;
+  }
+
+  ::selection {
+    @apply text-light bg-light-blue bg-opacity-50 ;
+  }
+}
