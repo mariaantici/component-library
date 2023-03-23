@@ -1,5 +1,6 @@
 import "tailwindcss/tailwind.css";
 import "@/styles/globals.css";
+import "@/styles/customScrollbar.css";
 import { useEffect } from "react";
 import { ThemeProvider, useTheme } from "next-themes";
 import type { AppProps } from 'next/app'

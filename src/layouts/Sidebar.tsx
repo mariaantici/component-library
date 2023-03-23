@@ -30,7 +30,7 @@ export default function Sidebar() {
     ];
 
     return (
-        <aside className="fixed top-20 flex flex-col w-52 h-screen overflow-y-auto justify-between flex-1 border-r border-white">
+        <aside className="fixed top-20 flex flex-col w-52 h-screen overflow-y-auto justify-between flex-1 border-r border-white hide-scrollbar">
             <nav>
                 {links.map(({ name, icon }, index) => (
                     <a
