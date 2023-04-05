@@ -8,6 +8,14 @@
   }
 
   ::selection {
-    @apply text-light bg-light-blue bg-opacity-50 ;
+    @apply text-light bg-blue dark:bg-light-blue bg-opacity-50 ;
   }
+}
+
+.rotate-0 {
+  transform: rotate(0deg);
+}
+
+.rotate-90 {
+  transform: rotate(90deg);
 }

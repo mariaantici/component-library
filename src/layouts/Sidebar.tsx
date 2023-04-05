@@ -1,53 +1,48 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChartBar, faUsers, faFileAlt } from '@fortawesome/free-solid-svg-icons';
+import { useReducer } from 'react';
+import categories from '@/data/sidebarData.json';
+import getIcon from './SidebarLogo';
+
+function reducer(state: number[], action: { type: "TOGGLE_DROPDOWN"; index: number }): number[] {
+    switch (action.type) {
+        case "TOGGLE_DROPDOWN":
+            if (state.includes(action.index)) {
+                return state.filter((i: number) => i !== action.index);
+            } else {
+                return [...state, action.index];
+            }
+        default:
+            return state;
+    }
+}
 
 export default function Sidebar() {
-    const links = [
-        { name: 'Dashboard', icon: faChartBar },
-        { name: 'Accounts', icon: faUsers },
-        { name: 'Reports', icon: faFileAlt },
-        { name: 'Dashboard', icon: faChartBar },
-        { name: 'Accounts', icon: faUsers },
-        { name: 'Reports', icon: faFileAlt },
-        { name: 'Dashboard', icon: faChartBar },
-        { name: 'Accounts', icon: faUsers },
-        { name: 'Reports', icon: faFileAlt },
-        { name: 'Dashboard', icon: faChartBar },
-        { name: 'Accounts', icon: faUsers },
-        { name: 'Reports', icon: faFileAlt },
-        { name: 'Dashboard', icon: faChartBar },
-        { name: 'Accounts', icon: faUsers },
-        { name: 'Reports', icon: faFileAlt },
-        { name: 'Dashboard', icon: faChartBar },
-        { name: 'Accounts', icon: faUsers },
-        { name: 'Reports', icon: faFileAlt },
-        { name: 'Dashboard', icon: faChartBar },
-        { name: 'Accounts', icon: faUsers },
-        { name: 'Reports', icon: faFileAlt },
-        { name: 'Dashboard', icon: faChartBar },
-        { name: 'Accounts', icon: faUsers },
-        { name: 'Reports', icon: faFileAlt },
-    ];
+
+    const [openIndices, dispatch] = useReducer(reducer, []);
 
     return (
-        <aside className="fixed top-20 flex flex-col w-52 h-screen overflow-y-auto justify-between flex-1 border-r border-white hide-scrollbar">
-            <nav>
-                {links.map(({ name, icon }, index) => (
-                    <a
-                        key={index}
-                        className="flex items-center px-4 py-2 mt-5 transition-colors duration-300 transform rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
-                        href="#"
+        <nav className="fixed top-20 flex flex-col w-52 h-[calc(100vh-5rem)] overflow-y-auto flex-1 hide-scrollbar">
+            {categories.map(({ name, components }, index) => (
+                <div key={index} className="mt-5">
+                    <button
+                        className="flex items-center px-4 py-2 transition-colors duration-300 transform rounded-3xl hover:bg-light-blue hover:bg-opacity-10 text-left focus:outline-none"
+                        onClick={() => dispatch({ type: 'TOGGLE_DROPDOWN', index })}
                     >
-                        <FontAwesomeIcon icon={icon} className="w-5 h-5 mr-4" />
+                        {getIcon(openIndices.includes(index))}
                         <span className="font-medium">{name}</span>
-                    </a>
-                ))}
-            </nav>
-
-            <div className="flex items-center px-4 -mx-2">
-                <img className="object-cover w-10 h-10 mx-2 rounded-full" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Avatar" />
-                <h4 className="mx-2 font-medium text-gray-800 dark:text-gray-200 hover:underline">John Doe</h4>
-            </div>
-        </aside >
+                    </button>
+                    {openIndices.includes(index) && (
+                        <div className="ml-8 mt-1 flex flex-col space-y-1">
+                            {components.map(({ name, href }, index) => (
+                                <a key={index} className="inline-block px-4 py-1" href={href}>
+                                    <span className="px-4 py-2 transition-colors duration-300 transform rounded-3xl hover:bg-light-blue hover:bg-opacity-10">
+                                        {name}
+                                    </span>
+                                </a>
+                            ))}
+                        </div>
+                    )}
+                </div>
+            ))}
+        </nav>
     );
-};
+}
