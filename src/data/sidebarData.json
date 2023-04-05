@@ -1,0 +1,53 @@
+[
+    {
+        "name": "Category 1",
+        "components": [
+            {
+                "name": "Component 1",
+                "href": "/component-1"
+            },
+            {
+                "name": "Component 2",
+                "href": "/component-2"
+            },
+            {
+                "name": "Component 3",
+                "href": "/component-3"
+            }
+        ]
+    },
+    {
+        "name": "Category 2",
+        "components": [
+            {
+                "name": "Component 1",
+                "href": "/component-1"
+            },
+            {
+                "name": "Component 2",
+                "href": "/component-2"
+            },
+            {
+                "name": "Component 3",
+                "href": "/component-3"
+            }
+        ]
+    },
+    {
+        "name": "Category 3",
+        "components": [
+            {
+                "name": "Component 1",
+                "href": "/component-1"
+            },
+            {
+                "name": "Component 2",
+                "href": "/component-2"
+            },
+            {
+                "name": "Component 3",
+                "href": "/component-3"
+            }
+        ]
+    }
+]
