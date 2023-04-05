@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Logo from "../components/Logo";
+import Logo from "../layouts/Logo";
 import { useTheme } from "next-themes";
 import { faSun, faMoon } from "@fortawesome/free-regular-svg-icons";
 import { useState, useEffect } from "react";
